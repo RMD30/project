@@ -1,0 +1,57 @@
+<header class="head">
+        <img src="assets/image/logo.png" id="logo" style="height: 150px; max-height: 100%;">
+        <p style="color: white; font-size: 35px; font-family: 'Times New Roman', Times, serif; margin-top: 3%;"> 
+            Food Haus
+        </p>
+        <span class="date" style="float: right;" >{{ date | date:'short'}}</span>
+</header>
+<nav>
+    <ul id="myTab" class="nav nav-tabs" role="tablist">
+        <!-- <li role="presentation"><a routerLink="/home" role="tab" data-toggle="tab">Home</a></li> -->
+        <li role="presentation"><a routerLink="/restaurant" role="tab" data-toggle="tab">Restaurant</a></li>
+        <li role="presentation"><a routerLink="/About" role="tab" data-toggle="tab">About Us</a></li>
+        
+            
+        <li role="presentation" style="float: right;"><a routerLink="/login" role="tab" data-toggle="tab">Login</a></li>
+        <li style="float: right;" ><input type="text" id="search_text" placeholder="Search"/></li>
+        <li><span></span></li>
+    </ul>
+</nav>
+
+
+<body style="margin: 0 auto;">
+    <div class="wrapper">
+
+<div class="login" style="margin-top: 3%;">
+    <h2 class="login-header">Log in</h2>
+    <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
+      
+        <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+            <input type="email" placeholder="Username" formControlName="email">
+        </p>
+      
+        <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
+            <div *ngIf="formControls.email.errors.required">Email is required</div>
+        </div>
+      
+        <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+            <input type="password" placeholder="Password" formControlName="password">
+        </p>
+      
+        <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+            <div *ngIf="formControls.password.errors.required">Password is required</div>
+        </div>
+      
+        <p>
+         <input type="submit" value="Log in">
+        </p>
+    </form>
+</div>
+
+    </div>
+</body>
+
+
+<footer class="footer">
+        <span> &copy; 2019 Simple Food Reservation. All Rights Reserved</span>
+</footer>

@@ -1,0 +1,76 @@
+<header class="head">
+    <img src="assets/image/logo.png" id="logo" style="height: 150px; max-height: 100%;">
+    <p style="color: white; font-size: 35px; font-family: 'Times New Roman', Times, serif; margin-top: 3%;"> 
+        Food Haus
+    </p>
+    <span class="date" style="float: right;" >{{ date | date:'short'}}</span>
+</header>
+<nav>
+<ul id="myTab" class="nav nav-tabs" role="tablist">
+    <li role="presentation"><a routerLink="/dashboard" role="tab" data-toggle="tab">Dashboard</a></li>
+    <!-- <li role="presentation"><a routerLink="/productmanagement" role="tab" data-toggle="tab">Product Management</a></li> -->
+    <li role="presentation"><a routerLink="/inventory" role="tab" data-toggle="tab">Inventory</a></li>
+
+
+    <li role="presentation" style="float: right;"><a (click)="logout()" role="tab" data-toggle="tab">Logout</a></li>
+    <li style="float: right;" ><input type="text" id="search_text" placeholder="Search"/></li>
+    <!-- <li style="float: right; margin-top: 0.5%;"><span class="date">{{ date | date:'short'}}</span></li> -->
+</ul>
+</nav>
+
+<body style="margin: 0 auto;">
+    <div class="wrapper">
+            <!-- <nav class="navBar">
+                <ul id="myTab2" class="nav nav-tabs" role="tablist">
+                    <li role="presentation"><a routerLink="/inventory" role="tab" data-toggle="tab">Foods</a></li>
+                    <li role="presentation"><a routerLink="/newfood" role="tab" data-toggle="tab">New Food</a></li>
+                </ul>
+            </nav> -->
+        <h2 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color:darkblue; text-align: center; background-color: aliceblue; padding: 5px">
+            Food Inventory
+        </h2>
+
+            <div class="inventoryTable" style="padding: 2%;">
+            <form #food="ngForm" style="padding: 2%;">
+                <label style="color: rgb(78, 146, 206); font-size: 20px; font-weight: bold; font-family: 'Times New Roman', Times, serif; text-align: left;">
+                    Name*
+                </label><br>
+                    <input class="input" type="text" placeholder="Name" required #foodname="ngModel" [class.invalid]="foodname.invalid && foodname.touched" [(ngModel)]= "foodName" name="foodName" ><br>
+        
+                <label style="color: rgb(78, 146, 206); font-size: 20px; font-weight: bold; font-family: 'Times New Roman', Times, serif; text-align: left;">
+                    Price*
+                </label><br>
+                    <input class="input" type="number" placeholder="Price" required #foodprice="ngModel" [class.invalid]="foodprice.invalid && foodprice.touched" [(ngModel)]= "foodPrice" name="foodPrice" ><br><br>
+        
+                <button id="btn" (click)="addFood()" *ngIf="food.valid">Submit</button>
+            </form>     
+            <br>
+            <br>
+
+            <table>
+                <tr>
+                    <th>Food Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+                
+                <tr *ngFor="let food of foods">
+                    <td>{{food.name}}</td>
+                    <td><span>P</span> {{food.price}}</td>
+                    
+                    <td>
+                        <button  id="action" (click)="updateFood(food._id)">Update</button>
+                        | <button id="action" (click)="deleteFood(food._id)" style = "margin-left: 0.5%">Delete</button>
+                    </td>
+                </tr>
+            </table>  
+            </div> 
+    </div>
+</body>
+
+
+<footer class="footer">
+    <span> &copy; 2019 Simple Food Reservation. All Rights Reserved</span>
+</footer>
+<!-- <a routerLink="/login"> Login </a>
+<a routerLink= "/admin"> Go to admin</a> -->

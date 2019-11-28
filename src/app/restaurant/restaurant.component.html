@@ -1,0 +1,75 @@
+<header class="head">
+    <img src="assets/image/logo.png" id="logo" style="height: 150px; max-height: 100%;">
+    <p style="color: white; font-size: 35px; font-family: 'Times New Roman', Times, serif; margin-top: 3%;"> 
+        Food Haus
+    </p>
+    <span class="date" style="float: right;" >{{ date | date:'short'}}</span>
+</header>
+<nav>
+    <ul id="myTab" class="nav nav-tabs" role="tablist">
+        <!-- <li role="presentation"><a routerLink="/home" role="tab" data-toggle="tab">Home</a></li> -->
+        <li role="presentation"><a routerLink="/restaurant" role="tab" data-toggle="tab">Restaurant</a></li>
+        <li role="presentation"><a routerLink="/aboutus" role="tab" data-toggle="tab">About Us</a></li>
+        
+            
+        <li role="presentation" style="float: right;"><a routerLink="/login" role="tab" data-toggle="tab">Login</a></li>
+        <li style="float: right;" ><input type="text" id="search_text" placeholder="Search"/></li>
+        <li><span></span></li>
+    </ul>
+</nav>
+        
+<body style="margin: 0 auto ;">
+    <div class="wrapper">
+        <div class="left" style="float: left; margin: 0; width: 45%; max-width: 100%;">
+            <h2>Menu</h2>
+        <table>
+            <tr>
+                <th>Food Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+                    
+            <tr *ngFor="let food of foods">
+                <td>{{food.name}}</td>
+                <td><span>P</span> {{food.price}}</td>
+                        
+                <td>
+                    <button  id="action">Order</button>
+                </td>
+            </tr>
+        </table> 
+        </div>
+    
+
+
+        <div class="right" style="float: right; margin: 0; width: 45%; max-width: 100%; text-align: left;">
+            <h2>Order Summary</h2>
+            <table style="text-align: left;">
+                <h4>Customer Details:</h4><br>
+                <tr>
+                    <label style="outline: none; font-size: 16px; color: darkblue;">Enter Name: </label>   
+                    <input type="text" name="cust_nmae" id="cust_name" style="outline: none; font-size: 16px; color: darkblue; border: none; border-bottom: 1px solid darkblue;"><br>
+
+                    <label style="outline: none; font-size: 16px; color: darkblue;">Enter Time: </label>
+                    <input type="time" name="time" id="time" style="outline: none; font-size: 14px; color: darkblue; border: none; border-bottom: 1px solid darkblue; padding: none;"><br>
+                </tr>
+                <hr id="line">
+                <h4>Orders:</h4><br>
+                <tr >
+                    <td>
+                    
+                    </td>
+                </tr>
+                <hr id="line">
+                <tr>
+                    <button id="btns" (click)="new_orders()">New</button>
+                    <button id="btns" (click)="compute_change()">Checkout</button>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+        
+<footer class="footer">
+<span> &copy; 2019 Simple Food Reservation. All Rights Reserved</span>
+</footer>
